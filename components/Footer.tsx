@@ -66,9 +66,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-white/5 text-center">
-          <p className="text-[10px] text-white/30 uppercase tracking-[0.3em]">© 2024 Miss L&apos;oeil. Tous droits réservés.</p>
+          <p className="text-[10px] text-white/30 uppercase tracking-[0.3em]">© 2026 Miss L&apos;oeil. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
