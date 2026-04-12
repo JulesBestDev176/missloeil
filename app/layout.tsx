@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   description: "Sublimez votre éclat naturel avec Miss L'oeil. Des soins capillaires artisanaux, huiles de pousse et crèmes nourrissantes fabriqués avec passion à Dakar.",
   icons: {
     icon: [
-      { url: "/logo.png", href: "/logo.png" },
+      { url: "/image/logo2.jpeg", href: "/image/logo2.jpeg" },
     ],
     apple: [
-      { url: "/logo.png", href: "/logo.png" },
+      { url: "/image/logo2.jpeg", href: "/image/logo2.jpeg" },
     ],
   },
 };

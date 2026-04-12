@@ -42,7 +42,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative w-12 h-12">
-              <Image src="/logo.png" alt="Miss L'oeil Logo" fill className="object-contain" />
+              <Image src="/image/logo.png" alt="Miss L'oeil Logo" fill className="object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="font-sans tracking-widest text-[#1B4332] text-[10px] uppercase font-semibold leading-none">Healthy Hair</span>
@@ -58,9 +58,9 @@ export default function Navbar() {
               { id: "temoignages", label: "Avis" },
               { id: "contact", label: "Contact" }
             ].map((item) => (
-              <Link 
-                key={item.id} 
-                href={`/#${item.id}`} 
+              <Link
+                key={item.id}
+                href={`/#${item.id}`}
                 className={`text-xs font-semibold uppercase tracking-widest transition-all relative group py-2
                   ${activeSection === item.id ? "text-[#2D6A4F]" : "text-slate-500 hover:text-[#2D6A4F]"}`}
               >
@@ -70,7 +70,7 @@ export default function Navbar() {
                 ></span>
               </Link>
             ))}
-            <a 
+            <a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
               className="px-6 py-2.5 bg-[#25D366] text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[#128C7E] transition-all shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
@@ -104,7 +104,7 @@ export default function Navbar() {
               {item}
             </Link>
           ))}
-          <a 
+          <a
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             className="mt-4 w-full py-4 bg-[#25D366] text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2"
