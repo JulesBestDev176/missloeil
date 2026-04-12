@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { whatsappNumber } from "@/app/data/products";
+import Icon from "./Icon";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,30 +76,26 @@ export default function Navbar() {
               target="_blank"
               className="px-6 py-2.5 bg-[#25D366] text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[#128C7E] transition-all shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
             >
-              <iconify-icon icon="logos:whatsapp-icon" width="14"></iconify-icon>
+              <Icon icon="logos:whatsapp-icon" width="14" />
               {formattedWhatsapp}
             </a>
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[#1B4332] hover:bg-[#95D5B2]/20 focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <iconify-icon icon={isMenuOpen ? "solar:close-circle-bold" : "solar:hamburger-menu-bold"} width="28"></iconify-icon>
+          {/* Mobile Toggle */}
+          <button className="md:hidden text-[#1B4332] p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Icon icon={isMenuOpen ? "solar:close-circle-bold" : "solar:hamburger-menu-bold"} width="28" />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-[#F8FFF9] border-b border-[#95D5B2]/20 shadow-lg`}>
-        <div className="px-4 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col">
-          {["produits", "bienfaits", "temoignages", "apropos"].map((item) => (
+      {/* Mobile Menu */}
+      <div className={`md:hidden absolute top-20 left-0 right-0 bg-white border-b border-[#95D5B2]/20 shadow-xl transition-all duration-300 overflow-hidden ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="px-4 py-8 flex flex-col gap-6">
+          {["produits", "bienfaits", "temoignages", "contact"].map((item) => (
             <Link
               key={item}
               href={`/#${item}`}
-              className="block px-3 py-3 text-base font-medium text-slate-600 hover:text-[#2D6A4F] hover:bg-[#95D5B2]/10 rounded-md capitalize"
+              className="text-sm font-semibold uppercase tracking-widest text-slate-600 hover:text-[#2D6A4F]"
               onClick={() => setIsMenuOpen(false)}
             >
               {item}
@@ -109,8 +106,8 @@ export default function Navbar() {
             target="_blank"
             className="mt-4 w-full py-4 bg-[#25D366] text-white text-center rounded-xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2"
           >
-            <iconify-icon icon="logos:whatsapp-icon" width="18"></iconify-icon>
-            WhatsApp : {formattedWhatsapp}
+            <Icon icon="logos:whatsapp-icon" width="18" />
+            Contact WhatsApp
           </a>
         </div>
       </div>

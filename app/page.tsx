@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { products, whatsappNumber, callNumber } from "@/app/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Icon from "@/components/Icon";
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -55,7 +56,7 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full bg-[#52B788] animate-pulse"></span>
                   Disponible à Dakar
                 </div>
-                <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl text-[#1B4332] tracking-tighter leading-[1] mb-8 max-w-xl mx-auto lg:mx-0">
+                <h1 className="font-playfair text-4xl sm:text-6xl md:text-7xl text-[#1B4332] tracking-tighter leading-[1] mb-8 max-w-xl mx-auto lg:mx-0">
                   Sublimez votre <br /><span className="italic text-[#52B788]">Éclat</span> Naturel.
                 </h1>
                 <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
@@ -64,7 +65,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <a href="#produits" className="px-8 py-3.5 bg-[#2D6A4F] text-white rounded-full text-sm font-medium hover:bg-[#1B4332] transition-all shadow-xl shadow-[#2D6A4F]/20 flex items-center justify-center gap-2 group">
                     Découvrir nos soins
-                    <iconify-icon icon="solar:round-alt-arrow-right-bold" className="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    <Icon icon="solar:round-alt-arrow-right-bold" className="group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a href="#contact" className="px-8 py-3.5 bg-white text-[#2D6A4F] border border-[#95D5B2] rounded-full text-sm font-medium hover:bg-[#F8FFF9] transition-all flex items-center justify-center">
                     Notre histoire
@@ -135,7 +136,7 @@ export default function Home() {
                           target="_blank"
                           className="px-3.5 py-1.5 rounded-full text-[9px] font-medium bg-[#25D366] text-white hover:bg-[#128C7E] transition-colors uppercase tracking-wider flex items-center gap-1.5"
                         >
-                          <iconify-icon icon="logos:whatsapp-icon" width="12"></iconify-icon>
+                          <Icon icon="logos:whatsapp-icon" width="12" />
                           Commander
                         </a>
                       </div>
@@ -164,7 +165,7 @@ export default function Home() {
                 { icon: "solar:star-bold", title: "Efficacité Réelle", desc: "Des résultats visibles dès les premières utilisations sur la pousse et l'éclat." }
               ].map((benefit, i) => (
                 <div key={i} className="group p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all hover:bg-white/5">
-                  <iconify-icon icon={benefit.icon} width="40" className="text-[#52B788] mb-6 group-hover:scale-110 transition-transform"></iconify-icon>
+                  <Icon icon={benefit.icon} width="40" className="text-[#52B788] mb-6 group-hover:scale-110 transition-transform" />
                   <h3 className="font-playfair text-xl mb-4 text-white">{benefit.title}</h3>
                   <p className="text-white/60 font-light text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
@@ -209,7 +210,7 @@ export default function Home() {
                       <div className="bg-[#F8FFF9] border border-[#95D5B2]/30 p-10 md:p-14 rounded-[32px] text-center relative">
                         <div className="flex justify-center gap-1 mb-6 text-[#52B788]">
                           {[...Array(5)].map((_, i) => (
-                            <iconify-icon key={i} icon="solar:star-bold" width="16"></iconify-icon>
+                            <Icon key={i} icon="solar:star-bold" width="16" />
                           ))}
                         </div>
                         <p className="text-lg md:text-2xl text-[#1B4332] font-light leading-relaxed mb-8 italic">
@@ -219,7 +220,7 @@ export default function Home() {
                           <p className="font-bold text-[#2D6A4F] uppercase tracking-widest text-sm">{t.name}</p>
                           <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">{t.role}</p>
                         </div>
-                        <iconify-icon icon="solar:quote-left-bold" width="80" className="absolute top-6 left-8 text-[#52B788]/5"></iconify-icon>
+                        <Icon icon="solar:quote-left-bold" width="80" className="absolute top-6 left-8 text-[#52B788]/5" />
                       </div>
                     </div>
                   ))}
@@ -243,20 +244,20 @@ export default function Home() {
         {/* Guide Download Section */}
         <section className="py-20 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#F8FFF9] rounded-[40px] border border-[#95D5B2]/30 p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 reveal">
+            <div className="bg-[#F8FFF9] rounded-[40px] border border-[#95D5B2]/30 p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 reveal text-center md:text-left">
               <div className="w-full md:w-1/2">
                 <span className="text-[#52B788] text-xs font-semibold uppercase tracking-widest mb-4 block">Votre Routine Parfaite</span>
                 <h2 className="font-playfair text-3xl md:text-5xl text-[#1B4332] mb-6 leading-tight">Téléchargez votre guide d&apos;utilisation complet</h2>
                 <p className="text-slate-600 font-light mb-8 leading-relaxed">
                   Pour obtenir les meilleurs résultats avec vos soins Miss L&apos;oeil, nous avons conçu une notice détaillée. Apprenez les gestes essentiels pour une chevelure éclatante de santé.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                   <a 
                     href="/image/mode.jpeg" 
                     download="Guide_Utilisation_Miss_Loeil.jpeg"
                     className="inline-flex items-center justify-center px-6 py-3 bg-[#2D6A4F] text-white rounded-full text-sm font-medium hover:bg-[#1B4332] transition-all shadow-lg shadow-[#2D6A4F]/20 gap-3"
                   >
-                    <iconify-icon icon="solar:download-minimalistic-bold" width="18"></iconify-icon>
+                    <Icon icon="solar:download-minimalistic-bold" width="18" />
                     Télécharger le guide
                   </a>
                 </div>
@@ -275,32 +276,32 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-gradient-to-b from-[#F8FFF9] to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-[40px] shadow-xl shadow-[#95D5B2]/10 border border-[#95D5B2]/20 p-8 md:p-16 reveal relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-                <iconify-icon icon="solar:phone-calling-bold" width="200"></iconify-icon>
+            <div className="bg-white rounded-[40px] shadow-xl shadow-[#95D5B2]/10 border border-[#95D5B2]/20 p-8 md:p-16 reveal relative overflow-hidden text-center md:text-left">
+              <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none hidden md:block">
+                <Icon icon="solar:phone-calling-bold" width="200" />
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-16 relative z-10">
+              <div className="flex flex-col lg:flex-row gap-12 md:gap-16 relative z-10">
                 <div className="w-full lg:w-1/2">
-                  <h2 className="font-playfair text-4xl text-[#1B4332] mb-6 whitespace-nowrap">Parlons de <span className="italic text-[#52B788]">vos</span> cheveux</h2>
-                  <p className="text-slate-600 font-light mb-10 leading-relaxed max-w-md">Une question sur un produit ou sur votre routine ? Nous sommes là pour vous accompagner au quotidien.</p>
+                  <h2 className="font-playfair text-3xl md:text-4xl text-[#1B4332] mb-6">Parlons de <span className="italic text-[#52B788]">vos</span> cheveux</h2>
+                  <p className="text-slate-600 font-light mb-10 leading-relaxed max-w-md mx-auto md:mx-0">Une question sur un produit ou sur votre routine ? Nous sommes là pour vous accompagner au quotidien.</p>
                   
-                  <div className="space-y-8">
-                    <div className="flex items-center gap-6 group">
+                  <div className="space-y-8 flex flex-col items-center md:items-start">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 group">
                       <div className="w-14 h-14 bg-[#52B788]/10 rounded-2xl flex items-center justify-center text-[#2D6A4F] group-hover:bg-[#2D6A4F] group-hover:text-white transition-all">
-                        <iconify-icon icon="solar:phone-bold" width="24"></iconify-icon>
+                        <Icon icon="solar:phone-bold" width="24" />
                       </div>
-                      <div>
+                      <div className="flex flex-col items-center md:items-start">
                         <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Téléphone & WhatsApp</p>
                         <a href={`tel:${callNumber}`} className="text-xl font-medium text-[#1B4332] hover:text-[#2D6A4F]">+221 76 626 45 93</a>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-6 group">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 group">
                       <div className="w-14 h-14 bg-[#25D366]/10 rounded-2xl flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all">
-                        <iconify-icon icon="logos:whatsapp-icon" width="24"></iconify-icon>
+                        <Icon icon="logos:whatsapp-icon" width="24" />
                       </div>
-                      <div>
+                      <div className="flex flex-col items-center md:items-start">
                         <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-1">WhatsApp de commande</p>
                         <a href={`https://wa.me/${whatsappNumber}`} target="_blank" className="text-xl font-medium text-[#1B4332] hover:text-[#2D6A4F]">+221 78 154 77 78</a>
                       </div>
@@ -324,7 +325,7 @@ export default function Home() {
                       target="_blank"
                       className="mt-8 w-full py-4 bg-[#25D366] text-white rounded-2xl flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest hover:bg-[#128C7E] transition-all shadow-lg shadow-[#25D366]/20"
                     >
-                      <iconify-icon icon="logos:whatsapp-icon" width="18"></iconify-icon>
+                      <Icon icon="logos:whatsapp-icon" width="18" />
                       Message WhatsApp
                     </a>
                   </div>

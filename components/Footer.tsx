@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { callNumber } from "@/app/data/products";
+import Icon from "./Icon";
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-6 pointer-events-none">
               <div className="relative w-14 h-14 bg-white rounded-full flex items-center justify-center p-2 shadow-sm text-[#1B4332]">
-                <Image src="/logo.png" alt="Miss L'oeil Logo" width={40} height={40} className="object-contain" />
+                <Image src="/image/logo.png" alt="Miss L'oeil Logo" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-sans tracking-widest text-[#95D5B2] text-[10px] uppercase font-semibold leading-none">Healthy Hair</span>
@@ -36,15 +37,15 @@ export default function Footer() {
             <h4 className="font-bold text-xs uppercase tracking-[0.2em] mb-6 text-[#52B788]">Contact</h4>
             <ul className="space-y-4 text-sm font-light text-white/60">
               <li className="flex items-center gap-2">
-                <iconify-icon icon="solar:phone-bold" className="text-[#52B788]"></iconify-icon>
+                <Icon icon="solar:phone-bold" className="text-[#52B788]" />
                 +221 76 626 45 93
               </li>
               <li className="flex items-center gap-2">
-                <iconify-icon icon="logos:whatsapp-icon" className="text-[#52B788]"></iconify-icon>
+                <Icon icon="logos:whatsapp-icon" className="text-[#52B788]" />
                 +221 78 154 77 78
               </li>
               <li className="flex items-center gap-2">
-                <iconify-icon icon="solar:map-point-bold" className="text-[#52B788]"></iconify-icon>
+                <Icon icon="solar:map-point-bold" className="text-[#52B788]" />
                 Dakar, Sénégal
               </li>
             </ul>
@@ -54,13 +55,13 @@ export default function Footer() {
             <h4 className="font-bold text-xs uppercase tracking-[0.2em] mb-6 text-[#52B788]">Suivez-nous</h4>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#52B788] hover:border-[#52B788] transition-all">
-                <iconify-icon icon="ri:instagram-line" width="20"></iconify-icon>
+                <Icon icon="ri:instagram-line" width="20" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#52B788] hover:border-[#52B788] transition-all">
-                <iconify-icon icon="ri:facebook-fill" width="20"></iconify-icon>
+                <Icon icon="ri:facebook-fill" width="20" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#52B788] hover:border-[#52B788] transition-all">
-                <iconify-icon icon="ri:tiktok-fill" width="20"></iconify-icon>
+                <Icon icon="ri:tiktok-fill" width="20" />
               </a>
             </div>
           </div>

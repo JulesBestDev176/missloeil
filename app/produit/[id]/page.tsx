@@ -6,6 +6,7 @@ import { products, routineRecommendation, whatsappNumber, callNumber } from "@/a
 import { notFound, useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Icon from "@/components/Icon";
 
 export default function ProductPage() {
   const params = useParams();
@@ -50,14 +51,14 @@ export default function ProductPage() {
                   target="_blank"
                   className="py-4 bg-[#25D366] text-white text-center rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#128C7E] flex items-center justify-center gap-2"
                 >
-                  <iconify-icon icon="logos:whatsapp-icon" width="18"></iconify-icon>
+                  <Icon icon="logos:whatsapp-icon" width="18" />
                   Commander via WhatsApp
                 </a>
                 <a
                   href={`tel:${callNumber}`}
                   className="py-4 bg-white border border-[#95D5B2] text-[#2D6A4F] text-center rounded-lg text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                 >
-                  <iconify-icon icon="solar:phone-bold" width="18"></iconify-icon>
+                  <Icon icon="solar:phone-bold" width="18" />
                   Appel Direct
                 </a>
               </div>
@@ -69,7 +70,7 @@ export default function ProductPage() {
                   <ul className="space-y-3">
                     {product.instructions.map((ins, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-slate-600 font-light leading-relaxed">
-                        <iconify-icon icon="solar:check-circle-bold" width="18" className="text-[#52B788] mt-0.5 shrink-0"></iconify-icon>
+                        <Icon icon="solar:check-circle-bold" width="18" className="text-[#52B788] mt-0.5 shrink-0" />
                         {ins}
                       </li>
                     ))}
