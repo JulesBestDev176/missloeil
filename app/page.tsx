@@ -49,35 +49,31 @@ export default function Home() {
         <section id="accueil" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-[#F0F7F1] to-[#F8FFF9]">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-[#95D5B2]/10 rounded-full blur-[120px] pointer-events-none"></div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 md:py-20">
-            <div className="flex flex-col lg:flex-row items-center gap-12 sm:gap-16">
-              <div className="w-full lg:w-[45%] text-center lg:text-left reveal">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#52B788]/10 text-[#2D6A4F] text-[10px] font-bold uppercase tracking-widest mb-6 border border-[#52B788]/20">
-                  <span className="w-2 h-2 rounded-full bg-[#52B788] animate-pulse"></span>
-                  Disponible à Dakar
-                </div>
-                <h1 className="font-playfair text-4xl sm:text-6xl md:text-7xl text-[#1B4332] tracking-tighter leading-[1] mb-8 max-w-xl mx-auto lg:mx-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-10 md:py-20 lg:py-0">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative">
+              {/* Text Content */}
+              <div className="w-full lg:w-[50%] text-center lg:text-left reveal relative z-20">
+                <h1 className="font-playfair text-4xl sm:text-6xl md:text-7xl text-[#1B4332] tracking-tighter leading-[1] mb-6 max-w-xl mx-auto lg:mx-0">
                   Sublimez votre <br /><span className="italic text-[#52B788]">Éclat</span> Naturel.
                 </h1>
-                <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+                <p className="text-slate-600 text-lg md:text-xl font-light leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                   Des soins capillaires artisanaux 100% naturels pour des cheveux sains, forts et rayonnants.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div className="flex justify-center lg:justify-start">
                   <a href="#produits" className="px-8 py-3.5 bg-[#2D6A4F] text-white rounded-full text-sm font-medium hover:bg-[#1B4332] transition-all shadow-xl shadow-[#2D6A4F]/20 flex items-center justify-center gap-2 group">
                     Découvrir nos soins
                     <Icon icon="solar:round-alt-arrow-right-bold" className="group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="#contact" className="px-8 py-3.5 bg-white text-[#2D6A4F] border border-[#95D5B2] rounded-full text-sm font-medium hover:bg-[#F8FFF9] transition-all flex items-center justify-center">
-                    Notre histoire
-                  </a>
                 </div>
               </div>
 
-              <div className="w-full lg:w-[45%] flex justify-center lg:justify-end reveal mt-12 lg:mt-0 relative">
+              {/* Image Content - Slightly larger than previous state */}
+              <div className="w-full lg:w-[50%] flex justify-center lg:justify-end reveal relative lg:mt-0 
+                absolute lg:relative inset-0 lg:inset-auto z-10 lg:z-10 opacity-20 lg:opacity-100 pointer-events-none lg:pointer-events-auto">
                 <div className="absolute top-1/2 left-1/2 -translate-x-[35%] -translate-y-1/2 w-[80%] h-[80%] bg-[#95D5B2]/20 animate-blob z-0"></div>
                 <div className="absolute top-1/2 left-1/2 -translate-x-[35%] -translate-y-1/2 w-[65%] h-[65%] bg-[#52B788]/10 animate-blob z-0" style={{ animationDelay: "2s" }}></div>
 
-                <div className="relative z-10 w-full max-w-sm aspect-square scale-90 md:scale-100">
+                <div className="relative z-10 w-full max-w-sm lg:max-w-md aspect-square scale-[0.8] md:scale-100 lg:scale-110">
                   <Image src="/image/hero_final.png" alt="Produits Miss L'oeil" fill className="object-contain drop-shadow-2xl" priority />
                 </div>
               </div>
