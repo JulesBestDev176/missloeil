@@ -9,8 +9,15 @@ import Icon from "./Icon";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("accueil");
+  const [scrolled, setScrolled] = useState(false);
 
   const formattedWhatsapp = "+221 78 154 77 78";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const sections = ["accueil", "produits", "bienfaits", "temoignages", "contact"];
@@ -37,7 +44,11 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-[#95D5B2]/20">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+      scrolled
+        ? "bg-white/95 backdrop-blur-md border-[#95D5B2]/25 shadow-[0_2px_24px_rgba(27,67,50,0.07)]"
+        : "bg-transparent border-transparent"
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}

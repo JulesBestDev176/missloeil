@@ -86,22 +86,28 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <span className="text-[#52B788] text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block">Collection Essentielle</span>
-              <h2 className="font-playfair text-4xl md:text-5xl text-[#1B4332] tracking-tight mb-6 italic">Nos Soins</h2>
-              <div className="w-20 h-1 bg-[#52B788] mx-auto rounded-full"></div>
+              <h2 className="font-playfair text-4xl md:text-5xl text-[#1B4332] tracking-tight mb-4 italic">Nos Soins</h2>
+              <p className="text-slate-400 text-sm font-light max-w-md mx-auto mb-6">Des soins artisanaux pensés pour sublimer chaque fibre de vos cheveux.</p>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-[#52B788] to-[#95D5B2] mx-auto rounded-full"></div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3 mb-12 reveal">
+            {/* Filters */}
+            <div className="flex flex-wrap justify-center gap-2 mb-14 reveal">
               {[
-                { id: "all", label: "Tous les produits" },
+                { id: "all", label: "Tout voir" },
                 { id: "spray", label: "Spray" },
                 { id: "creme", label: "Crèmes" },
                 { id: "huile", label: "Huiles" },
                 { id: "duo", label: "Duos" },
-                { id: "routine", label: "Routine Complète" }
+                { id: "routine", label: "Routine" },
               ].map((filter) => (
                 <button
                   key={filter.id}
-                  className={`px-5 py-2 rounded-full text-xs font-medium transition-all ${activeFilter === filter.id ? "bg-[#2D6A4F] text-white shadow-md shadow-[#2D6A4F]/20" : "bg-[#F8FFF9] text-[#2D6A4F] border border-[#95D5B2] hover:bg-[#95D5B2]/20"}`}
+                  className={`filter-pill px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                    activeFilter === filter.id
+                      ? "active bg-[#2D6A4F] text-white"
+                      : "bg-white text-[#2D6A4F] border border-[#95D5B2]/50 hover:border-[#2D6A4F]/40 hover:bg-[#F0FAF5]"
+                  }`}
                   onClick={() => setActiveFilter(filter.id)}
                 >
                   {filter.label}
@@ -109,40 +115,78 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-center">
+            {/* Product Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {products
                 .filter(p => activeFilter === "all" || p.category === activeFilter)
-                .map((product, idx) => (
-                <article key={product.id} className="reveal group flex flex-col rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-[#95D5B2]/30 border border-[#95D5B2]/20" style={{ transitionDelay: `${idx * 100}ms` }}>
-                  <Link href={`/produit/${product.id}`} className="w-full h-64 mb-6 flex items-center justify-center relative overflow-hidden cursor-pointer">
-                    <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 left-3 bg-white/90 text-[#2D6A4F] text-[10px] font-medium px-2 py-1 rounded uppercase tracking-wider backdrop-blur-sm">{product.type}</div>
-                  </Link>
-                  <div className="flex flex-col flex-grow">
-                    <h3 className="font-playfair text-xl text-[#1B4332] mb-2">{product.name}</h3>
-                    <p className="text-sm text-slate-500 font-light leading-relaxed mb-6">{product.desc}</p>
-                    <div className="flex items-center justify-between mt-auto pt-6 border-t border-[#95D5B2]/30 gap-4">
-                      <span className="font-medium text-[#2D6A4F] text-xl tracking-tight">{product.price}</span>
-                      <div className="flex gap-2">
-                        <Link
-                          href={`/produit/${product.id}`}
-                          className="px-3.5 py-1.5 rounded-full text-[9px] font-medium border border-[#95D5B2] text-[#2D6A4F] hover:bg-[#95D5B2]/20 transition-colors uppercase tracking-wider"
-                        >
-                          Détails
-                        </Link>
-                        <a
-                          href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bonjour Miss L'oeil, je souhaite commander : ${product.name}`)}`}
-                          target="_blank"
-                          className="px-3.5 py-1.5 rounded-full text-[9px] font-medium bg-[#25D366] text-white hover:bg-[#128C7E] transition-colors uppercase tracking-wider flex items-center gap-1.5"
-                        >
-                          <Icon icon="logos:whatsapp-icon" width="12" />
-                          Commander
-                        </a>
+                .map((product, idx) => {
+                  const specialBadge: Record<number, { label: string; cls: string }> = {
+                    1: { label: "Nouveau", cls: "bg-[#3B82F6] text-white" },
+                    7: { label: "Populaire", cls: "bg-amber-500 text-white badge-glow" },
+                    5: { label: "Bestseller", cls: "bg-rose-500 text-white" },
+                  };
+                  const badge = specialBadge[product.id];
+
+                  return (
+                    <article
+                      key={product.id}
+                      className="product-card reveal group relative rounded-3xl overflow-hidden bg-white border border-[#95D5B2]/20 shadow-[0_2px_20px_rgba(27,67,50,0.05)]"
+                      style={{ transitionDelay: `${idx * 60}ms` }}
+                    >
+                      {/* Image */}
+                      <Link href={`/produit/${product.id}`} className="block relative overflow-hidden h-56 sm:h-64 w-full">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="card-img object-cover"
+                        />
+                        {/* Bottom gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0b2318]/70 via-[#1B4332]/20 to-transparent" />
+
+                        {/* Top badges */}
+                        <div className="absolute top-3 left-3 right-3 flex items-start justify-between">
+                          <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-[#2D6A4F] text-[8px] font-bold uppercase tracking-widest rounded-full shadow-sm">
+                            {product.type}
+                          </span>
+                          {badge && (
+                            <span className={`px-2.5 py-1 text-[8px] font-bold uppercase tracking-widest rounded-full shadow-sm ${badge.cls}`}>
+                              {badge.label}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Price chip on image */}
+                        <div className="absolute bottom-3 right-3 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-[#1B4332] font-bold text-sm shadow-lg">
+                          {product.price}
+                        </div>
+                      </Link>
+
+                      {/* Text content */}
+                      <div className="p-5">
+                        <h3 className="font-playfair text-[1.1rem] text-[#1B4332] mb-1.5 leading-snug">{product.name}</h3>
+                        <p className="text-xs text-slate-400 font-light leading-relaxed mb-4 line-clamp-2">{product.desc}</p>
+                        <div className="flex gap-2">
+                          <Link
+                            href={`/produit/${product.id}`}
+                            className="flex-1 py-2.5 rounded-xl text-[9px] font-bold border border-[#95D5B2] text-[#2D6A4F] hover:bg-[#95D5B2]/20 transition-colors uppercase tracking-wider text-center"
+                          >
+                            Détails
+                          </Link>
+                          <a
+                            href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Bonjour Miss L'oeil, je souhaite commander : ${product.name}`)}`}
+                            target="_blank"
+                            className="flex-1 py-2.5 rounded-xl text-[9px] font-bold bg-[#25D366] text-white hover:bg-[#128C7E] transition-colors uppercase tracking-wider flex items-center justify-center gap-1.5"
+                          >
+                            <Icon icon="logos:whatsapp-icon" width="11" />
+                            Commander
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
+                    </article>
+                  );
+                })}
             </div>
           </div>
         </section>
@@ -334,6 +378,16 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Floating WhatsApp CTA */}
+      <a
+        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Bonjour Miss L'oeil, j'aimerais avoir des informations sur vos produits.")}`}
+        target="_blank"
+        aria-label="Commander sur WhatsApp"
+        className="fab-pulse fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-[0_8px_32px_rgba(37,211,102,0.45)] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_40px_rgba(37,211,102,0.55)]"
+      >
+        <Icon icon="logos:whatsapp-icon" width="28" />
+      </a>
 
       <Footer />
       <RevealHandler trigger={activeFilter} />
