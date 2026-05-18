@@ -93,8 +93,11 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-3 mb-12 reveal">
               {[
                 { id: "all", label: "Tous les produits" },
+                { id: "spray", label: "Spray" },
+                { id: "creme", label: "Crèmes" },
                 { id: "huile", label: "Huiles" },
-                { id: "creme", label: "Crèmes" }
+                { id: "duo", label: "Duos" },
+                { id: "routine", label: "Routine Complète" }
               ].map((filter) => (
                 <button
                   key={filter.id}
@@ -106,7 +109,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-center">
               {products
                 .filter(p => activeFilter === "all" || p.category === activeFilter)
                 .map((product, idx) => (

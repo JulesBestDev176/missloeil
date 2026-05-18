@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { products, routineRecommendation, whatsappNumber, callNumber } from "@/app/data/products";
@@ -91,12 +92,17 @@ export default function ProductPage() {
 
                   <div className="bg-[#1B4332] p-6 rounded-lg">
                     <p className="text-[10px] font-bold text-[#95D5B2] uppercase tracking-[0.2em] mb-4 text-center">Routine Recommandée</p>
-                    <div className="flex justify-around items-center px-4">
+                    <div className="flex justify-around items-center px-4 gap-1">
                       {routineRecommendation.steps.map((step, idx) => (
-                        <div key={idx} className="text-center">
-                          <p className="text-sm text-white font-medium">{step.product}</p>
-                          <p className="text-[10px] text-white/50 uppercase tracking-wider">{step.part}</p>
-                        </div>
+                        <React.Fragment key={idx}>
+                          <div className="text-center">
+                            <p className="text-sm text-white font-medium">{step.product}</p>
+                            <p className="text-[10px] text-white/50 uppercase tracking-wider">{step.part}</p>
+                          </div>
+                          {idx < routineRecommendation.steps.length - 1 && (
+                            <span className="text-white/30 text-xs">→</span>
+                          )}
+                        </React.Fragment>
                       ))}
                     </div>
                   </div>
